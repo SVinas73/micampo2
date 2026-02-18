@@ -52,7 +52,7 @@ export function PlantacionesChart({ data = defaultData, height = 300 }: Plantaci
               borderRadius: '12px',
               boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
             }}
-            formatter={(value: number) => [`${value} ha`, 'Hectáreas']}
+            formatter={(value) => [`${value} ha`, 'Hectáreas']}
           />
           <Bar dataKey="value" radius={[4, 4, 0, 0]}>
             {data.map((entry, index) => (

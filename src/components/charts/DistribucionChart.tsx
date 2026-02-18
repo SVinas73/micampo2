@@ -54,7 +54,7 @@ export function DistribucionChart({
                 borderRadius: '12px',
                 boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
               }}
-              formatter={(value: number, name: string) => [`${value} ${unit}`, name]}
+              formatter={(value, name) => [`${value} ${unit}`, name]}
             />
           </PieChart>
         </ResponsiveContainer>
