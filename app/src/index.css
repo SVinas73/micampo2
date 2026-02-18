@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import './styles/cabin-mode.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* MiCampo Color Palette */
+    --mc-verde-bosque: 158 48% 21%;
+    --mc-tierra: 24 40% 39%;
+    --mc-dorado: 45 68% 47%;
+    --mc-verde-claro: 142 26% 39%;
+    --mc-arena: 38 33% 90%;
+    --mc-grafito: 200 9% 17%;
+    --mc-niebla: 36 24% 95%;
+    --mc-ia: 239 84% 67%;
+    --mc-alerta: 6 76% 60%;
+    --mc-exito: 142 71% 45%;
+    
+    /* shadcn variables */
+    --background: 36 24% 95%;
+    --foreground: 200 9% 17%;
+    --card: 0 0% 100%;
+    --card-foreground: 200 9% 17%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 9% 17%;
+    --primary: 158 48% 21%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 24 40% 39%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 36 24% 90%;
+    --muted-foreground: 200 9% 45%;
+    --accent: 45 68% 47%;
+    --accent-foreground: 200 9% 17%;
+    --destructive: 6 76% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 36 24% 85%;
+    --input: 36 24% 85%;
+    --ring: 158 48% 21%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-[#F5F2ED] text-[#2D3436] antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  
+  code, pre, .mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .spring-ease {
+    transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  .smooth-ease {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Neural Network Animations */
+@keyframes neural-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+}
+
+@keyframes data-flow {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes float-organic {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  75% {
+    transform: translateY(10px) rotate(-1deg);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(26, 77, 62, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(26, 77, 62, 0.6);
+  }
+}
+
+.animate-neural-pulse {
+  animation: neural-pulse 3s ease-in-out infinite;
+}
+
+.animate-data-flow {
+  animation: data-flow 2s linear infinite;
+}
+
+.animate-float-organic {
+  animation: float-organic 6s ease-in-out infinite;
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* Neural Lines */
+.neural-line {
+  stroke-dasharray: 5, 5;
+  animation: data-flow 20s linear infinite;
+}
+
+/* Glass Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.glass-dark {
+  background: rgba(45, 52, 54, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Hexagon Shape */
+.hexagon {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F2ED;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1B4D3E;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #147a33;
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(27, 77, 62, 0.3);
+  color: inherit;
+}
+
+/* Focus */
+*:focus-visible {
+  outline: 2px solid #1B4D3E;
+  outline-offset: 2px;
+}
