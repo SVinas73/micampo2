@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { DashboardLayout } from '@/components/layout/DashboardLayout';
 
 // Lazy load de páginas de Agronomía
+const AgronomiaLayout = lazy(() => import('@/pages/agronomia/AgronomiaLayout'));
 const AgronomiaResumen = lazy(() => import('@/pages/agronomia/Resumen'));
 const AgronomiaLotes = lazy(() => import('@/pages/agronomia/Lotes'));
 const AgronomiaLabores = lazy(() => import('@/pages/agronomia/Labores'));
@@ -18,6 +19,16 @@ function PageLoader() {
   );
 }
 
+// Placeholder para submódulos en desarrollo
+function SubmodulePlaceholder({ nombre }: { nombre: string }) {
+  return (
+    <div className="flex flex-col items-center justify-center h-64 bg-white dark:bg-[#2D3436] rounded-2xl border border-[#E5E5E5] dark:border-[#404040]">
+      <p className="text-lg font-medium text-[#2D3436] dark:text-white">{nombre}</p>
+      <p className="text-[#636E72] dark:text-[#B2BEC3] mt-2">En desarrollo</p>
+    </div>
+  );
+}
+
 export default function Dashboard() {
   return (
     <DashboardLayout>
@@ -26,12 +37,20 @@ export default function Dashboard() {
           {/* Redirección por defecto a Agronomía */}
           <Route path="/" element={<Navigate to="agronomia" replace />} />
 
-          {/* Rutas de Agronomía */}
-          <Route path="agronomia" element={<AgronomiaResumen />} />
-          <Route path="agronomia/lotes" element={<AgronomiaLotes />} />
-          <Route path="agronomia/labores" element={<AgronomiaLabores />} />
-          <Route path="agronomia/cultivos" element={<AgronomiaCultivos />} />
-          <Route path="agronomia/enfermedades" element={<AgronomiaEnfermedades />} />
+          {/* Rutas de Agronomía con layout compartido (tabs) */}
+          <Route path="agronomia" element={<AgronomiaLayout />}>
+            <Route index element={<AgronomiaResumen />} />
+            <Route path="lotes" element={<AgronomiaLotes />} />
+            <Route path="labores" element={<AgronomiaLabores />} />
+            <Route path="cultivos" element={<AgronomiaCultivos />} />
+            <Route path="enfermedades" element={<AgronomiaEnfermedades />} />
+            <Route path="planificador" element={<SubmodulePlaceholder nombre="Planificador de Siembras" />} />
+          </Route>
+
+          {/* Rutas de Agronomía - submódulos del sidebar (sin tabs) */}
+          <Route path="agronomia/dosis" element={<SubmodulePlaceholder nombre="Calculadora de Dosis" />} />
+          <Route path="agronomia/clima" element={<SubmodulePlaceholder nombre="Clima" />} />
+          <Route path="agronomia/riego" element={<SubmodulePlaceholder nombre="Plan de Riego" />} />
 
           {/* Placeholders para otros módulos */}
           <Route path="ganaderia" element={<div className="p-8 text-center">Módulo Ganadería - En desarrollo</div>} />

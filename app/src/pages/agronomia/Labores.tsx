@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
-import { 
-  Plus, 
-  Calendar as CalendarIcon, 
-  Clock, 
-  CheckCircle2, 
+import {} from 'react';
+import {
+  Plus,
+  Calendar as CalendarIcon,
+  Clock,
+  CheckCircle2,
   AlertTriangle,
   Wind,
   Droplets,
   Tractor,
-  Sprout,
   MoreHorizontal,
   ChevronLeft,
   ChevronRight

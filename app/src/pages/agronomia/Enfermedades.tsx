@@ -96,7 +96,8 @@ const mockDetecciones: PlagaDeteccion[] = [
   },
 ];
 
-const severidadConfig = {
+const severidadConfig: Record<string, { color: string; textColor: string; bgLight: string; border: string }> = {
+  CRITICA: { color: 'bg-[#8E44AD]', textColor: 'text-[#8E44AD]', bgLight: 'bg-[#8E44AD]/10', border: 'border-[#8E44AD]/20' },
   ALTA: { color: 'bg-[#E74C3C]', textColor: 'text-[#E74C3C]', bgLight: 'bg-[#E74C3C]/10', border: 'border-[#E74C3C]/20' },
   MEDIA: { color: 'bg-[#F39C12]', textColor: 'text-[#F39C12]', bgLight: 'bg-[#F39C12]/10', border: 'border-[#F39C12]/20' },
   BAJA: { color: 'bg-[#3498DB]', textColor: 'text-[#3498DB]', bgLight: 'bg-[#3498DB]/10', border: 'border-[#3498DB]/20' },
