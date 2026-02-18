@@ -1,0 +1,113 @@
+/* Modo Cabina - Alto contraste para uso en campo bajo sol */
+
+.cabin-mode {
+  --cabin-bg: #FFFFFF;
+  --cabin-text: #000000;
+  --cabin-border: #000000;
+  --cabin-accent: #FF6B00;
+  --cabin-success: #00AA00;
+  --cabin-warning: #FFAA00;
+  --cabin-danger: #FF0000;
+}
+
+.cabin-mode body {
+  background-color: var(--cabin-bg) !important;
+  color: var(--cabin-text) !important;
+  font-weight: 500 !important;
+}
+
+.cabin-mode .bg-white,
+.cabin-mode .dark\:bg-\[\#2D3436\] {
+  background-color: var(--cabin-bg) !important;
+  border: 2px solid var(--cabin-border) !important;
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.2) !important;
+}
+
+.cabin-mode h1,
+.cabin-mode h2,
+.cabin-mode h3,
+.cabin-mode h4 {
+  color: var(--cabin-text) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+.cabin-mode button {
+  border: 2px solid var(--cabin-border) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+}
+
+.cabin-mode button.bg-\[\#1B4D3E\],
+.cabin-mode button.bg-\[\#27AE60\] {
+  background-color: var(--cabin-success) !important;
+  color: white !important;
+  border-color: var(--cabin-border) !important;
+}
+
+.cabin-mode button.bg-\[\#E74C3C\] {
+  background-color: var(--cabin-danger) !important;
+}
+
+.cabin-mode button.bg-\[\#F39C12\] {
+  background-color: var(--cabin-warning) !important;
+}
+
+.cabin-mode .text-\[\#636E72\],
+.cabin-mode .dark\:text-\[\#B2BEC3\] {
+  color: #444444 !important;
+  font-weight: 500 !important;
+}
+
+/* Aumentar tamaño de fuente para mejor lectura bajo sol */
+.cabin-mode {
+  font-size: 16px !important;
+}
+
+.cabin-mode .text-xs {
+  font-size: 14px !important;
+}
+
+.cabin-mode .text-sm {
+  font-size: 16px !important;
+}
+
+.cabin-mode .text-lg {
+  font-size: 20px !important;
+}
+
+.cabin-mode .text-2xl {
+  font-size: 28px !important;
+}
+
+.cabin-mode .text-3xl {
+  font-size: 36px !important;
+}
+
+/* Modo Oscuro para uso nocturno */
+.dark.cabin-mode {
+  --cabin-bg: #0a0a0a;
+  --cabin-text: #ffffff;
+  --cabin-border: #333333;
+  --cabin-accent: #FF8C00;
+  --cabin-success: #00DD00;
+  --cabin-warning: #FFCC00;
+  --cabin-danger: #FF3333;
+}
+
+.dark.cabin-mode body {
+  background-color: var(--cabin-bg) !important;
+}
+
+/* Scrollbar más gruesa para modo táctil */
+.cabin-mode ::-webkit-scrollbar {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.cabin-mode ::-webkit-scrollbar-thumb {
+  background-color: var(--cabin-border) !important;
+  border-radius: 8px !important;
+  border: 4px solid var(--cabin-bg) !important;
+}
