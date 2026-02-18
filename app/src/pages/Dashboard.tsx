@@ -24,25 +24,25 @@ export default function Dashboard() {
       <Suspense fallback={<PageLoader />}>
         <Routes>
           {/* Redirección por defecto a Agronomía */}
-          <Route path="/" element={<Navigate to="/dashboard/agronomia" replace />} />
-          
+          <Route path="/" element={<Navigate to="agronomia" replace />} />
+
           {/* Rutas de Agronomía */}
-          <Route path="/agronomia" element={<AgronomiaResumen />} />
-          <Route path="/agronomia/lotes" element={<AgronomiaLotes />} />
-          <Route path="/agronomia/labores" element={<AgronomiaLabores />} />
-          <Route path="/agronomia/cultivos" element={<AgronomiaCultivos />} />
-          <Route path="/agronomia/enfermedades" element={<AgronomiaEnfermedades />} />
-          
+          <Route path="agronomia" element={<AgronomiaResumen />} />
+          <Route path="agronomia/lotes" element={<AgronomiaLotes />} />
+          <Route path="agronomia/labores" element={<AgronomiaLabores />} />
+          <Route path="agronomia/cultivos" element={<AgronomiaCultivos />} />
+          <Route path="agronomia/enfermedades" element={<AgronomiaEnfermedades />} />
+
           {/* Placeholders para otros módulos */}
-          <Route path="/ganaderia" element={<div className="p-8 text-center">Módulo Ganadería - En desarrollo</div>} />
-          <Route path="/logistica" element={<div className="p-8 text-center">Módulo Logística - En desarrollo</div>} />
-          <Route path="/finanzas" element={<div className="p-8 text-center">Módulo Finanzas - En desarrollo</div>} />
-          <Route path="/maquinaria" element={<div className="p-8 text-center">Módulo Maquinaria - En desarrollo</div>} />
-          <Route path="/sostenibilidad" element={<div className="p-8 text-center">Módulo Sostenibilidad - En desarrollo</div>} />
-          <Route path="/calendario" element={<div className="p-8 text-center">Calendario - En desarrollo</div>} />
-          
+          <Route path="ganaderia" element={<div className="p-8 text-center">Módulo Ganadería - En desarrollo</div>} />
+          <Route path="logistica" element={<div className="p-8 text-center">Módulo Logística - En desarrollo</div>} />
+          <Route path="finanzas" element={<div className="p-8 text-center">Módulo Finanzas - En desarrollo</div>} />
+          <Route path="maquinaria" element={<div className="p-8 text-center">Módulo Maquinaria - En desarrollo</div>} />
+          <Route path="sostenibilidad" element={<div className="p-8 text-center">Módulo Sostenibilidad - En desarrollo</div>} />
+          <Route path="calendario" element={<div className="p-8 text-center">Calendario - En desarrollo</div>} />
+
           {/* 404 */}
-          <Route path="*" element={<Navigate to="/dashboard/agronomia" replace />} />
+          <Route path="*" element={<Navigate to="agronomia" replace />} />
         </Routes>
       </Suspense>
     </DashboardLayout>

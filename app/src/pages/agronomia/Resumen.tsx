@@ -1,16 +1,17 @@
-import { 
-  Sprout, 
-  AlertTriangle, 
-  Calendar, 
-  ClipboardList, 
+import { useNavigate, useLocation } from 'react-router-dom';
+import {
+  Sprout,
+  AlertTriangle,
+  Calendar,
+  ClipboardList,
   MapPin,
   TrendingUp,
   Droplets,
   Sun,
-  Wind
+  Wind,
 } from 'lucide-react';
 import { MetricCard } from '@/components/agronomia/MetricCard';
-import PlantacionesChart from '@/components/charts/PlantacionesChart';
+import { PlantacionesChart } from '@/components/charts/PlantacionesChart';
 import { AlertasPanel } from '@/components/agronomia/AlertasPanel';
 import { ActividadesPanel } from '@/components/agronomia/ActividadesPanel';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -115,7 +116,38 @@ const plantacionesData = [
   { name: 'Seco', value: 5, color: '#E74C3C' },
 ];
 
+// Mapeo de tabs a rutas
+const TAB_ROUTES: Record<string, string> = {
+  resumen: '/dashboard/agronomia',
+  lotes: '/dashboard/agronomia/lotes',
+  labores: '/dashboard/agronomia/labores',
+  cultivos: '/dashboard/agronomia/cultivos',
+  enfermedades: '/dashboard/agronomia/enfermedades',
+  planificador: '/dashboard/agronomia/planificador',
+};
+
+// Obtener tab activo desde la URL
+function getActiveTab(pathname: string): string {
+  if (pathname.endsWith('/lotes')) return 'lotes';
+  if (pathname.endsWith('/labores')) return 'labores';
+  if (pathname.endsWith('/cultivos')) return 'cultivos';
+  if (pathname.endsWith('/enfermedades')) return 'enfermedades';
+  if (pathname.endsWith('/planificador')) return 'planificador';
+  return 'resumen';
+}
+
 export default function AgronomiaResumen() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const activeTab = getActiveTab(location.pathname);
+
+  const handleTabChange = (value: string) => {
+    const route = TAB_ROUTES[value];
+    if (route) {
+      navigate(route);
+    }
+  };
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -124,9 +156,9 @@ export default function AgronomiaResumen() {
           <h1 className="text-3xl font-bold text-[#2D3436] dark:text-white">Agronomía</h1>
           <p className="text-[#636E72] dark:text-[#B2BEC3]">Campo Digital</p>
         </div>
-        
+
         {/* Tabs de navegación */}
-        <Tabs defaultValue="resumen" className="w-full sm:w-auto">
+        <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full sm:w-auto">
           <TabsList className="bg-white dark:bg-[#2D3436] border border-[#E5E5E5] dark:border-[#404040]">
             <TabsTrigger value="resumen">Resumen</TabsTrigger>
             <TabsTrigger value="lotes">Lotes</TabsTrigger>
@@ -183,14 +215,14 @@ export default function AgronomiaResumen() {
         <div className="lg:col-span-2">
           <PlantacionesChart data={plantacionesData} height={350} />
         </div>
-        
+
         {/* Weather Mini Widget */}
         <div className="bg-gradient-to-br from-[#1B4D3E] to-[#2E7D32] rounded-2xl p-6 text-white">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold">Clima Actual</h3>
             <Sun className="w-6 h-6 text-[#F39C12]" />
           </div>
-          
+
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
@@ -202,7 +234,7 @@ export default function AgronomiaResumen() {
                 <p className="text-xl font-semibold">31°C</p>
               </div>
             </div>
-            
+
             <div className="grid grid-cols-3 gap-4 pt-4 border-t border-white/20">
               <div className="text-center">
                 <Droplets className="w-5 h-5 mx-auto mb-1 text-[#3498DB]" />
@@ -220,7 +252,7 @@ export default function AgronomiaResumen() {
                 <p className="font-semibold">5.2</p>
               </div>
             </div>
-            
+
             <div className="bg-white/10 rounded-xl p-3 mt-4">
               <p className="text-sm font-medium mb-2">Pronóstico próximas horas</p>
               <div className="flex justify-between text-sm">
