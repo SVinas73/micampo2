@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from '@/context/AuthContext';
+import { AuthProvider } from '@/context/AuthContext';
 import { FarmProvider } from '@/context/FarmContext';
 
 // Pages
@@ -12,7 +12,8 @@ import './App.css';
 
 // Protected Route Component
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated } = useAuth();
+  // TODO: Implementar lógica de autenticación real
+  const isAuthenticated = true; // Temporal para desarrollo
   return isAuthenticated ? <>{children}</> : <Navigate to="/login" />;
 }
 
@@ -27,7 +28,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             
-            {/* Protected Routes */}
+            {/* Protected Routes - Dashboard con layout */}
             <Route 
               path="/dashboard/*" 
               element={
@@ -36,6 +37,9 @@ function App() {
                 </ProtectedRoute>
               } 
             />
+            
+            {/* Redirects */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </BrowserRouter>
       </FarmProvider>
